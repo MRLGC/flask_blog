@@ -1,0 +1,79 @@
+{% extends "bootstrap/base.html" %}
+{% block title %} LGChaos`blog ! {% endblock %}
+{%- block styles %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="../static/css/llita.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/picsum.css">
+	  <link rel="stylesheet" type="text/css" href="../static/css/fonts_googleapis.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/mycss.css">
+{%- endblock styles %}
+{% block navbar %}
+
+{% endblock %}
+{% block content %}
+{% block page_content %}
+<div class="intro-header", style="background-image: url('../static/img/first_page_backgrand/backgrand.jpg');">
+    <div class="overlay">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="intro-message">
+              <!-- <a href="https://picsum.photos"> -->
+                <h1>Chaos Blog</h1>
+              </a>
+              <h3>目光要深邃，内心要火热</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <nav id="main-navigation" class="main-navigation" role="navigation">
+ 	<div id="nav-decorater">
+            <a class="nav-open">Menu</a>
+            <!-- <a class="nav-close">Close</a> -->
+        </div>
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="{{ url_for('index.index') }}">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="{{ url_for('index.archives') }}">Archives</a> </li>
+              
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="{{url_for('index.tags')}}">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="url_for(index.about)">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+{% endblock %}
+{% block footer %}
+<footer class="footer-margin">
+  <div class="footer-overlay" style="background-image: url('../static/img/first_page_backgrand/footer.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <!-- <p><a href="https://www.digitalocean.com?ref=picsum.photos"><img class="digitalocean" alt="Proudly hosted by DigitalOcean" src="/digitalocean.png"></a>
+          <span class="plus glyphicon glyphicon-plus" aria-hidden="true"></span>
+          <a href="https://belugacdn.com?ref=picsum.photos"><img class="belugacdn" alt="CDN provided by BelugaCDN" src="/belugacdn.png"></a></p>
+          <p>Created by <a href="http://dmarby.se">David Marby</a> & <a href="https://github.com/Nijikokun">Nijiko Yonskai</a></p>
+          <p><a href="https://github.com/DMarby/picsum-photos">Source</a></p>
+          <p>Having trouble? Poke <a href="https://twitter.com/DMarby">@DMarby</a> on Twitter</p>
+          <p>Images from <a href="https://unsplash.com">unsplash</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock%}
+{% endblock %}
+{% block scripts %}
+	{{ super() }}
+	<script type="text/javascript" src="../static/js/nav.js"></script>
+	<!-- <script type="text/javascript" src="../static/js/main.js"></script> -->
+{% endblock scripts %}

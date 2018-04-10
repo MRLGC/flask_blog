@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block page_content %}
+	{{super()}}
+<form action="{{url_for('admin.add')}}" method="post">
+	<div class="container edit-margin-top">
+		<div class="form-gruop">
+			{{form.hidden_tag()}}
+			{{form.title(class='form-control edit-margin')}}
+			{{form.text(id='editor', class='form-control')}}
+		</div>
+		<input type="submit" name="" class="btn btn-primary edit-margin-btn">
+	</div>
+</form>
+{% endblock %}
+{% block scripts %}
+	{{super()}}
+<script type="text/javascript" src="//cdn.ckeditor.com/4.4.6/full/ckeditor.js"></script>
+<script>
+	CKEDITOR.replace('editor',{
+		filebrowserUploadUrl: '/upload/'});
+</script>
+{% endblock scripts %}

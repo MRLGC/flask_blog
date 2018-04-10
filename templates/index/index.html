@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block page_content %}
+	{{ super() }}
+<div class="content-section-right">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 col-sm-6">
+      <div class="clearfix"></div>
+      <h2 class="section-heading">Basic Usage</h2>
+      <p class="lead">Just put your image size (width &amp; height) after our URL and you'll get a placeholder.</p>
+      <pre><code>https://picsum.photos/200/300</code></pre>
+      <p class="lead">To get a square image, just put the size you want.</p>
+      <pre><code>https://picsum.photos/200</code></pre>
+    </div>
+    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+      <img class="img-responsive" src="/458/354" alt="">
+    </div>
+  </div>
+</div>
+</div>
+<div class="content-section-left">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
+          <div class="clearfix"></div>
+          <h2 class="section-heading">Random image</h2>
+          <p class="lead">Get a random image by appending <code>?random</code> to the end of the url.</p>
+          <pre><code>https://picsum.photos/200/300/?random</code></pre>
+        </div>
+        <div class="col-lg-5 col-sm-pull-6 col-sm-6">
+          <img class="img-responsive random-image" src="/458/354?random" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+{% endblock %}
