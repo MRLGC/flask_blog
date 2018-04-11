@@ -1,2 +1,3 @@
 SECRET_KEY = 'you never get'
-
+SQLALCHEMY_DATABASE_URI = 'sqlite:///blog.db'
+SQLALCHEMY_TRACK_MODIFICATIONS = False

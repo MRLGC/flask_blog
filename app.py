@@ -6,6 +6,7 @@ from models.topic import db
 app = Flask(__name__)
 app.config.from_object('config')
 Bootstrap(app)
+db.init_app(app)
 app.register_blueprint(index)
 app.register_blueprint(admin)
 
