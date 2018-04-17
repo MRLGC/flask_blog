@@ -12,4 +12,6 @@ class Tags(db.Model):
 	)
 
 	def __repr__(self):
-		return '<Tag {}>',format(self.tag_name)
+		return '<Tag {}>'.format(self.tag_name)
+	
+

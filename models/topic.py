@@ -1,4 +1,5 @@
 from models import db
+from models import tags
 
 class Topics(db.Model):
 
@@ -13,6 +14,4 @@ class Topics(db.Model):
 	def __repr__(self):
 		return "<Topic {}>".format(self.title)
  
-
-
 

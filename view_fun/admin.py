@@ -1,10 +1,11 @@
 from flask import Blueprint
 from flask import request
 from flask import render_template
-from flask_wtf import Form
-from wtforms import TextAreaField
-from wtforms import StringField
-from wtforms.validators import DataRequired
+from forms.edit import MyBlogEdit
+from models.topic import Topics
+from models.tags import Tags
+import uuid
+from models import db
 
 admin_blueprint = Blueprint(
 	'admin',
@@ -12,13 +13,10 @@ admin_blueprint = Blueprint(
 	url_prefix='/admin'
 	)
 
-class MyBlogEdit(Form):
-	title = StringField('Title', validators=[DataRequired()])
-	text = TextAreaField("Text", validators=[DataRequired()])
-
 @admin_blueprint.route('/', methods=['GET', 'POST'])
 def index():
-	form = MyBlogEdit()
+	t = Tags().query.all()
+	form = MyBlogEdit(t)
 	if form.validate_on_submit():
 		print(form.title)
 	return render_template('admin/admin.html', form=form)
@@ -31,5 +29,11 @@ def upload():
 @admin_blueprint.route('/add', methods=['GET', 'POST'])
 def add():
 	form = request.form
-	print(form)
-	return 'hello'
+	topic = Topics()
+	# topic.author_id = 2
+	# topic.content = form.get('text')
+	# topic.title = form.get("title") 
+	# topic.tag_id = 1
+	# db.session.add(topic)
+	# db.session.commit()
+	# return render_template('index/index.html')

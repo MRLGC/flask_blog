@@ -5,7 +5,12 @@
 	<div class="container edit-margin-top">
 		<div class="form-gruop">
 			{{form.hidden_tag()}}
-			{{form.title(class='form-control edit-margin')}}
+			<tr>
+				<td>{{form.title.label}}:</td>
+				<td>{{form.title(class='form-control edit-margin')}}</td>
+				<td>{{form.tags.label}}:</td>
+				<td>{{form.tags(class='form-control edit-margin')}}</td>
+			</tr>
 			{{form.text(id='editor', class='form-control')}}
 		</div>
 		<input type="submit" name="" class="btn btn-primary edit-margin-btn">
