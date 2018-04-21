@@ -1,6 +1,7 @@
 from flask import Blueprint
 from flask import request
 from flask import render_template
+from wtforms import SelectField
 from forms.edit import MyBlogEdit
 from models.topic import Topics
 from models.tags import Tags
@@ -13,10 +14,17 @@ admin_blueprint = Blueprint(
 	url_prefix='/admin'
 	)
 
+# @admin_blueprint.route('')
+
+
 @admin_blueprint.route('/', methods=['GET', 'POST'])
 def index():
 	t = Tags().query.all()
-	form = MyBlogEdit(t)
+	tags = []
+	for i in t:
+		tags.append((i.tag_name, i.tag_name))
+	MyBlogEdit.tags = SelectField('Tag', choices=tags) 
+	form = MyBlogEdit()
 	if form.validate_on_submit():
 		print(form.title)
 	return render_template('admin/admin.html', form=form)

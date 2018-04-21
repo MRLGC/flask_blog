@@ -2,7 +2,7 @@ from flask import Flask
 from view_fun.index import index_blueprint as index
 from flask_bootstrap import Bootstrap
 from view_fun.admin import admin_blueprint as admin
-from models.topic import db
+from models import db
 app = Flask(__name__)
 app.config.from_object('config')
 Bootstrap(app)
@@ -15,4 +15,4 @@ def create_data():
 	db.create_all()
 
 if __name__ == '__main__':
-	app.run(port=5000,debug=True)
+	app.run(port=5300,debug=True)
