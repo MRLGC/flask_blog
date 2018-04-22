@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired
 
 class MyBlogEdit(FlaskForm):
 	title = StringField('Title', validators=[DataRequired()])
-	text = TextAreaField("Text", validators=[DataRequired()])
+	text = TextAreaField('Text', validators=[DataRequired()])
 	def __setattr__(self, name, value):
 		super().__setattr__(name, value)
 	

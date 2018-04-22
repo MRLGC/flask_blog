@@ -1,8 +1,8 @@
 from models import db
-from hashlib import md5
+import hashlib
+from flask_login import UserMixin
 
-
-class Users(db.Model):
+class Users(UserMixin, db.Model):
 
     __tablename__ = 'Users'
     id = db.Column(db.Integer, primary_key=True)
@@ -14,10 +14,12 @@ class Users(db.Model):
         self.password = self.hashPassword(pd)
 
     def hashPassword(self, pd):
-        md5 = md5.update(pd)
+        md5 = hashlib.md5()
+        pd = pd.encode('utf8')
+        md5.update(pd)
         return md5.hexdigest()
     
-    def __repr__(self):
-        return '<User {}>'.format(self.name)
-
     
+    def __repr__(self):
+        return '<User {}>'.format(self.user_name)
+
