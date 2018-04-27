@@ -1,0 +1,9 @@
+{% macro form_errors(field) %}
+{% if field.errors %}
+    {% for error in field.errors %}
+        <a>
+            {{error}}
+        </a>
+    {% endfor %}
+{% endif %}
+{% endmacro %}

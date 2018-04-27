@@ -3,19 +3,21 @@ from flask import request
 from flask import render_template
 from flask import redirect
 from flask import url_for
+from flask import make_response
+from flask import send_from_directory
 from wtforms import SelectField
-from forms.edit import MyBlogEdit
 from forms.login import Login
 from models.topic import Topics
 from models.tags import Tags
 from models.users import Users
-import uuid
+from forms.edit import MyBlogEdit
 from models import db
 from flask_login import LoginManager
 from flask_login import login_user
 from flask_login import login_required
-
-
+import os
+from flask_ckeditor import CKEditor
+ckeditor = CKEditor()
 admin_blueprint = Blueprint(
 	'admin',
 	__name__,
@@ -26,6 +28,14 @@ login_opt.login_manager = 'admin.login'
 login_opt.session_protection = 'strong'
 login_opt.login_message = "Please login to access this page."
 # login_opt.login_message_category = 'info'
+
+def dynamicMyBlogEdit():
+	t = Tags().query.all()
+	tags = []
+	for i in t:
+		tags.append((i.id, i.tag_name))
+	MyBlogEdit.tags = SelectField('Tag', choices=tags, coerce=int) 
+	return MyBlogEdit
 
 
 @login_opt.user_loader
@@ -48,33 +58,43 @@ def login():
 	return render_template('admin/login.html', form=form)
 
 
-
 @admin_blueprint.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
-	t = Tags().query.all()
-	tags = []
-	for i in t:
-		tags.append((i.tag_name, i.tag_name))
-	MyBlogEdit.tags = SelectField('Tag', choices=tags) 
-	form = MyBlogEdit()
-	if form.validate_on_submit():
-		print(form.title)
+	MyBlog = dynamicMyBlogEdit()
+	form = MyBlog()
 	return render_template('admin/admin.html', form=form)
 
-@admin_blueprint.route('/upload', methods=['GET', 'POST'])
+@admin_blueprint.route('/upload', methods=['POST'])
+@login_required
+@ckeditor.uploader
 def upload():
-	print('dsadasdasdad')
-	return render_template('admin/admin.html', form=form)
+	f = request.files.get('upload')
+	basedir = os.path.dirname(os.path.abspath(__name__))
+	uploaddir = os.path.join(basedir, 'uploadfile')
+	f.save(os.path.join(uploaddir, f.filename))
+	url = url_for('admin.files', filename=f.filename)
+	return url
 
-@admin_blueprint.route('/add', methods=['GET', 'POST'])
+@admin_blueprint.route('/files/<filename>')
+def files(filename):
+	basedir = os.path.dirname(os.path.abspath(__name__))
+	uploaddir = os.path.join(basedir, 'uploadfile')
+	return send_from_directory(uploaddir, filename)
+
+@admin_blueprint.route('/add', methods=['POST'])
+@login_required
 def add():
-	form = request.form
-	topic = Topics()
-	# topic.author_id = 2
-	# topic.content = form.get('text')
-	# topic.title = form.get("title") 
-	# topic.tag_id = 1
-	# db.session.add(topic)
-	# db.session.commit()
-	# return render_template('index/index.html')
+	MyBlog = dynamicMyBlogEdit()
+	form = MyBlog()
+	if form.validate_on_submit():
+		topic = Topics()
+		topic.title = form.title.data
+		topic.content = form.ckeditor.data
+		topic.tag_id = form.tags.data
+		db.session.add(topic)
+		db.session.commit()
+		return redirect(url_for('admin.index'))
+	else:
+		return render_template('admin/admin.html', form=form)
+

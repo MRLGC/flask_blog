@@ -9,24 +9,13 @@
                 <div class="form-group">
                     {{ form.username.label }}
                     {{ form.username(class="form-control") }}
-                    {% if form.username.errors %}
-                        {% for i in form.username.errors %}
-                            <a>
-                                {{i}}
-                            </a>
-                        {% endfor %}
-                    {% endif %}
+                    {% from 'macro.html' import form_errors %}
+                    {{ form_errors(form.username) }}
                 </div>
                 <div class="form-group">
                     {{form.password.label}}
                     {{form.password(class="form-control")}}
-                    {% if form.username.errors %}
-                        {% for i in form.username.errors %}
-                            <a>
-                                {{i}}
-                            </a>
-                        {% endfor %}
-                    {% endif %}
+                    {{ form_errors(form.password) }}
                 </div>
                 <div class="form-group">
                     {{form.submit(class="btn-primary")}}

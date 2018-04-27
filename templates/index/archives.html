@@ -2,150 +2,25 @@
 {% block page_content %}
 	{{ super() }}
  <section id="main">
-  <div class="archives-tags-wrap"><blockquote><span>There are 15 posts in total till now.</span></blockquote>
+  <div class="archives-tags-wrap"><blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
 		  <section class="archives-wrap">
-		    <div class="archive-year-wrap">
-		      <h1><a href="2016" class="archive-year">2016</a></h1>
-		    </div>
 		    <div class="archives">
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/" class="archive-article-date">
-		  <time datetime="2016-11-20T13:55:38.000Z" itemprop="datePublished">Nov 20, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/">Being Outside in Fresh Air &amp; How Your Body Loves It</a>
-    </h1>
-  
-
-    </header>
+          {% for i in topicList %}
+		      <article class="archive-article archive-type-post">
+            <div class="archive-article-inner">
+               <header class="archive-article-header">
+                <a href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/" class="archive-article-date">
+                <time datetime="{{i.createTime}}" itemprop="datePublished">{{i.createTime.strftime('%Y-%m-%d')}}</time>
+                </a>
+                <h1 class="thumb" itemprop="name">
+                <a class="archive-article-title" href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/">{{i.title}}</a>
+                </h1>
+              </header>
+             </div>
+          </article>
+          {% endfor %}
+        </div>
+      </section>
   </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/11/18/Stephen-Hawking/" class="archive-article-date">
-		  <time datetime="2016-11-18T02:55:37.000Z" itemprop="datePublished">Nov 18, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/11/18/Stephen-Hawking/">Stephen Hawking launches Centre for the Future of Intelligence</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/11/18/Hillary Clinton Calls for Unity in Concession Speech/" class="archive-article-date">
-		  <time datetime="2016-11-18T01:55:37.000Z" itemprop="datePublished">Nov 18, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/11/18/Hillary Clinton Calls for Unity in Concession Speech/">Hillary Clinton Calls for Unity in Concession Speech</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/10/24/Hiker主题预览/" class="archive-article-date">
-		  <time datetime="2016-10-24T03:07:20.000Z" itemprop="datePublished">Oct 24, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/10/24/Hiker主题预览/">Hiker主题预览</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/" class="archive-article-date">
-		  <time datetime="2016-08-14T09:32:55.000Z" itemprop="datePublished">Aug 14, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/08/14/【Machine Learning】机器学习：简明入门指南/">【Machine Learning】机器学习：简明入门指南</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/06/24/Java 8系列之重新认识HashMap/" class="archive-article-date">
-		  <time datetime="2016-06-24T03:58:55.000Z" itemprop="datePublished">Jun 24, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/06/24/Java 8系列之重新认识HashMap/">Java 8系列之重新认识HashMap</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-	
-		
-		
-		<article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-
-      <a href="../2016/01/26/Gallery-Example/" class="archive-article-date">
-		  <time datetime="2016-01-26T13:55:37.000Z" itemprop="datePublished">Jan 26, 2016</time>
-	  </a>
-      
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="../2016/01/26/Gallery-Example/">Gallery Example</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-</div></section>
 </section>
 {% endblock %}
