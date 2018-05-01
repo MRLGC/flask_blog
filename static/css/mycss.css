@@ -12,3 +12,18 @@
 	margin-top: 10px;
 	float: right;
 }
+.random-image{
+	width: 600px;
+	height: 300px !important;
+}
+.article-category-link{
+	display: inline-block !important;
+	margin-left: 20px !important;
+}
+.hr {
+	margin-top: 1px;
+	border-top-width: 2px;
+	border-top-style: solid;
+	border-top-color: black;
+}
+body,button, input, select, textarea,h1 ,h2, h3, h4, h5, h6 { font-family: Microsoft YaHei,'宋体' , Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;}

@@ -18,5 +18,17 @@ app.register_blueprint(admin)
 def create_data():
 	db.create_all()
 
+if not app.debug:
+	import logging
+	from logging.handlers import RotatingFileHandler
+	fileHandler = RotatingFileHandler('logfile/Myblog.log', mode='a', maxBytes=1*1024*1024, backupCount=10)
+	formatStr = '%(asctime)s %(levelname)s: %(message)s [%(pathname)s:%(lineno)d]'
+	logFormate = logging.Formatter(formatStr)
+	fileHandler.setFormatter(logFormate)
+	app.logger.setLevel(logging.INFO)
+	fileHandler.setLevel(logging.INFO)
+	app.logger.addHandler(fileHandler)
+	app.logger.info('Myblog startup')
+
 if __name__ == '__main__':
-	app.run(port=5000,debug=True,host='0.0.0.0')
+	app.run(port=5300,debug=True,host='0.0.0.0')

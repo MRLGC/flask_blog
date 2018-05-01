@@ -5,10 +5,40 @@
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <header class="article-header">
-                <h2 class="thumb" class="article-title" itemprop="name">
-                    Being Outside in Fresh Air &amp; How Your Body Loves It
+                <h2 class="thumb text-center" class="article-title" itemprop="name">
+                    {{topicObj.title}}
                 </h2>
              </header>
+            <div class="article-meta text-center">
+            <span>
+              {{topicObj.createTime.strftime('%Y-%m-%d')}}
+            </span>
+            <span class="article-category-link glyphicon glyphicon-tags">
+            {{topicObj.tag.tag_name}}
+            </span>
+            </div>
+            <div class="center-block">
+                {{topicObj.content|safe}}
+            </div>
+            <hr class="hr">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <h4>推荐阅读：</h4>
+                        <ul>
+                            {% if reconTopic %}
+                                {% for i in reconTopic %}
+                                    <li>
+                                        <a href="{{url_for('index.detail', topicId=i.id)}}">
+                                            {{i.title}}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

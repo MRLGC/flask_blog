@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block page_content %}
 	{{ super() }}
- <section id="main">
+<div class="container">
+  <div class="row">
+  <div class="col-lg-8 col-lg-offset-2 well">
   <div class="archives-tags-wrap"><blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
 		  <section class="archives-wrap">
 		    <div class="archives">
@@ -9,12 +11,13 @@
 		      <article class="archive-article archive-type-post">
             <div class="archive-article-inner">
                <header class="archive-article-header">
-                <a href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/" class="archive-article-date">
+                <span class="glyphicon glyphicon-time"></span>
                 <time datetime="{{i.createTime}}" itemprop="datePublished">{{i.createTime.strftime('%Y-%m-%d')}}</time>
                 </a>
-                <h1 class="thumb" itemprop="name">
-                <a class="archive-article-title" href="../2016/11/20/Being-Outside-in-Fresh-Air-and-How-Your-Body-Loves-It/">{{i.title}}</a>
-                </h1>
+                <h3 class="thumb" itemprop="name">
+                <span class="glyphicon glyphicon-bookmark"></span>
+                <a class="archive-article-title" href="{{url_for('index.detail', topicId=i.id)}}">{{i.title}}</a>
+                </h3>
               </header>
              </div>
           </article>
@@ -22,5 +25,7 @@
         </div>
       </section>
   </div>
-</section>
+</div>
+</div>
+</div>
 {% endblock %}

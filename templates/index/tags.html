@@ -5,37 +5,31 @@
 <section id="main">
   <div class="archives-wrap" style="margin: 0px;">
     <div class="row">
-      <div class="archives-wrap">
+        <div class="archives-wrap">
+          {% for i in tagList %}
         <div class="archive-year-wrap" id="Hexo">
-          <h1 class="archive-tag">Hexo</h1></div>
-        <div class="archives">
-          <article class="archive-article archive-type-post">
-            <div class="archive-article-inner">
-              <header class="archive-article-header">
-                <a href="../2016/10/24/Hiker主题预览/" class="archive-article-date">
-                  <time datetime="2016-10-24T03:07:20.000Z" itemprop="datePublished">Oct 24, 2016</time></a>
-                <h1 class="thumb" itemprop="name">
-                  <a class="archive-article-title" href="../2016/10/24/Hiker主题预览/">Hiker主题预览</a></h1>
-              </header>
+          <h1>
+            <span class="glyphicon glyphicon-folder-open"></span>
+            &nbsp&nbsp{{i.tag_name}}
+          </h1>
+          {% if i.topic.all() %}
+            {% for t in i.topic.all() %}
+            <div class="archives">
+              <article class="archive-article archive-type-post">
+                <div class="archive-article-inner">
+                  <header class="archive-article-header">
+                    <span>
+                    <span class="glyphicon glyphicon-time"></span>
+                    <span>{{t.createTime.strftime('%Y-%m-%d')}}</span>
+                    </span>
+                    <a class="archive-article-title" href="{{url_for('index.detail', topicId=t.id)}}">{{t.title}}</a>
+                  </header>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
-      </div>
-      <div class="archives-wrap">
-        <div class="archive-year-wrap" id="Java">
-          <h1 class="archive-tag">Java</h1></div>
-        <div class="archives">
-          <article class="archive-article archive-type-post">
-            <div class="archive-article-inner">
-              <header class="archive-article-header">
-                <a href="../2016/06/24/Java 8系列之重新认识HashMap/" class="archive-article-date">
-                  <time datetime="2016-06-24T03:58:55.000Z" itemprop="datePublished">Jun 24, 2016</time></a>
-                <h1 class="thumb" itemprop="name">
-                  <a class="archive-article-title" href="../2016/06/24/Java 8系列之重新认识HashMap/">Java 8系列之重新认识HashMap</a></h1>
-              </header>
-            </div>
-          </article>
-        </div>
+            {% endfor %}
+          {% endif %}
+      {% endfor %}
       </div>
    </section>
 {% endblock %}

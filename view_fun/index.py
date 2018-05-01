@@ -4,12 +4,14 @@ from flask import url_for
 from flask import send_from_directory
 from flask import abort
 from models.topic import Topics
+from models.tags import Tags
 import os
 import random
 index_blueprint = Blueprint(
 	'index',
 	__name__,
 	)
+
 
 @index_blueprint.route('/',methods=['GET'])
 def index():
@@ -31,18 +33,22 @@ def archives():
 
 @index_blueprint.route('/tags',methods=['GET'])
 def tags():
-	return render_template('index/tags.html')
+	tag = Tags()
+	tagList = tag.query.all()
+	return render_template('index/tags.html', tagList=tagList)
 
 @index_blueprint.route('/about',methods=['GET'])
 def about():
 	return render_template('index/about.html')
 
-@index_blueprint.route('/topic',methods=['GET'])
-def detail():
+@index_blueprint.route('/topic/<topicId>',methods=['GET'])
+def detail(topicId):
 	topic = Topics()
-	# topicObj = topic.query.filter_by(id=topicId).first()
-	if True:
-		return render_template('index/detail.html')
+	topicObj = topic.query.filter_by(id=topicId).first()
+	if topicObj:
+		tags = topicObj.tag
+		reconTopic = tags.topic.limit(4)
+		return render_template('index/detail.html', topicObj=topicObj, reconTopic=reconTopic)
 	else:
 		return abort(404)
 
@@ -51,4 +57,16 @@ def picLoad(file):
 	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'static/img/randomPic')
 	return send_from_directory(uploaddir, file)
+
+@index_blueprint.route('/favicon.ico', methods=['GET'])
+def icon():
+	basedir = os.path.dirname(os.path.abspath(__name__))
+	uploaddir = os.path.join(basedir, 'static/img/webHeaderPic')
+	return send_from_directory(uploaddir, 'doge.jpg')
+
+@index_blueprint.route('/aboutPic', methods=['GET'])
+def aboutPic():
+	basedir = os.path.dirname(os.path.abspath(__name__))
+	uploaddir = os.path.join(basedir, 'static/img/adminPic')
+	return send_from_directory(uploaddir, 'personalPic.jpg')
 
