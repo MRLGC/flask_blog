@@ -12,12 +12,13 @@ index_blueprint = Blueprint(
 	__name__,
 	)
 
+basedir = os.path.dirname(os.path.abspath(__name__))
+
 
 @index_blueprint.route('/',methods=['GET'])
 def index():
 	topic = Topics()
 	topicList = topic.query.order_by('createTime').limit(4)
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	path = os.path.join(basedir, 'static/img/randomPic')
 	picLs = os.listdir(path)
 	ranPicLs = random.sample(picLs, 4)
@@ -54,19 +55,16 @@ def detail(topicId):
 
 @index_blueprint.route('/pic/<file>',methods=['GET'])
 def picLoad(file):
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'static/img/randomPic')
 	return send_from_directory(uploaddir, file)
 
 @index_blueprint.route('/favicon.ico', methods=['GET'])
 def icon():
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'static/img/webHeaderPic')
 	return send_from_directory(uploaddir, 'doge.jpg')
 
 @index_blueprint.route('/aboutPic', methods=['GET'])
 def aboutPic():
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'static/img/adminPic')
 	return send_from_directory(uploaddir, 'personalPic.jpg')
 
