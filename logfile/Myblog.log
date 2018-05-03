@@ -3,3 +3,122 @@
 2018-05-02 22:41:45,926 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:31]
 2018-05-03 00:47:43,391 INFO: Myblog startup [.\app.py:36]
 2018-05-03 00:47:44,604 INFO: Myblog startup [.\app.py:36]
+2018-05-03 01:13:08,189 INFO: Myblog startup [.\app.py:36]
+2018-05-03 01:13:08,894 INFO: Myblog startup [.\app.py:36]
+2018-05-03 01:13:46,288 INFO: Myblog startup [.\app.py:36]
+2018-05-03 22:17:30,181 INFO: Myblog startup [.\app.py:36]
+2018-05-03 22:26:57,933 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:05:55,232 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:17:27,950 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:19:38,065 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:19:57,772 ERROR: Exception on /admin/delete/3 [GET] [E:\代码\my_blog\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+TypeError: delete() got an unexpected keyword argument 'topicId'
+2018-05-03 23:23:26,733 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:23:31,669 ERROR: Exception on /admin/delete/3 [GET] [E:\代码\my_blog\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+TypeError: delete() got an unexpected keyword argument 'topicId'
+2018-05-03 23:25:51,568 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:25:54,960 ERROR: Exception on /admin/delete/3 [GET] [E:\代码\my_blog\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\代码\my_blog\my_blog\view_fun\admin.py", line 110, in delete
+    topic = t.query.filter_by(id=TopicId)
+NameError: name 'TopicId' is not defined
+2018-05-03 23:25:57,265 ERROR: Exception on /admin/delete/3 [GET] [E:\代码\my_blog\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\代码\my_blog\my_blog\view_fun\admin.py", line 110, in delete
+    topic = t.query.filter_by(id=TopicId)
+NameError: name 'TopicId' is not defined
+2018-05-03 23:26:17,722 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:26:26,063 ERROR: Exception on /admin/delete/3 [GET] [E:\代码\my_blog\venv\lib\site-packages\flask\app.py:1560]
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1808, in delete
+    state = attributes.instance_state(instance)
+AttributeError: 'BaseQuery' object has no attribute '_sa_instance_state'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\_compat.py", line 33, in reraise
+    raise value
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\代码\my_blog\venv\lib\site-packages\flask\app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "E:\代码\my_blog\venv\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "E:\代码\my_blog\my_blog\view_fun\admin.py", line 111, in delete
+    db.session.delete(topic)
+  File "E:\代码\my_blog\venv\lib\site-packages\sqlalchemy\orm\scoping.py", line 153, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "E:\代码\my_blog\venv\lib\site-packages\sqlalchemy\orm\session.py", line 1810, in delete
+    raise exc.UnmappedInstanceError(instance)
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'flask_sqlalchemy.BaseQuery' is not mapped
+2018-05-03 23:26:56,100 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:30:20,412 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:30:59,978 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:32:15,106 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:36:02,775 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]
+2018-05-03 23:37:41,910 INFO: Myblog startup [E:\代码\my_blog\my_blog\app.py:36]

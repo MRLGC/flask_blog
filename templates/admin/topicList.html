@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    {{super()}}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 well">
+            {% if tagList: %}
+                {% for i in tagList %}
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <h4>
+                                {{i.tag_name}}
+                            </h4>
+                        </li>
+                        {% for t in i.topic %}
+                            <li class="list-group-item">
+                                {{t.title}}
+                                <span class="badge">
+                                    <a href="{{url_for('admin.delete', topicId=t.id)}}">删除</a>
+                                </span>
+                                <span class="badge">
+                                    修改
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

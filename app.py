@@ -35,6 +35,7 @@ def createApp():
 		app.logger.addHandler(fileHandler)
 		app.logger.info('Myblog startup')
 	return app
+	
 if __name__ == '__main__':
 	app = createApp()
 	app.run(port=5300,debug=True,host='0.0.0.0')

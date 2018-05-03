@@ -28,7 +28,7 @@ login_opt.login_manager = 'admin.login'
 login_opt.session_protection = 'strong'
 login_opt.login_message = "Please login to access this page."
 # login_opt.login_message_category = 'info'
-
+basedir = os.path.dirname(os.path.abspath(__name__))
 def dynamicMyBlogEdit():
 	t = Tags().query.all()
 	tags = []
@@ -63,14 +63,13 @@ def login():
 def index():
 	MyBlog = dynamicMyBlogEdit()
 	form = MyBlog()
-	return render_template('admin/admin.html', form=form)
+	return render_template('admin/edit.html', form=form)
 
 @admin_blueprint.route('/upload', methods=['POST'])
 @login_required
 @ckeditor.uploader
 def upload():
 	f = request.files.get('upload')
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'uploadfile')
 	f.save(os.path.join(uploaddir, f.filename))
 	url = url_for('admin.files', filename=f.filename)
@@ -78,7 +77,6 @@ def upload():
 
 @admin_blueprint.route('/files/<filename>')
 def files(filename):
-	basedir = os.path.dirname(os.path.abspath(__name__))
 	uploaddir = os.path.join(basedir, 'uploadfile')
 	return send_from_directory(uploaddir, filename)
 
@@ -96,5 +94,20 @@ def add():
 		db.session.commit()
 		return redirect(url_for('admin.index'))
 	else:
-		return render_template('admin/admin.html', form=form)
+		return render_template('admin/edit.html', form=form)
 
+@admin_blueprint.route('/topicList', methods=['GET'])
+@login_required
+def topicList():
+	t = Tags()
+	tagList = t.query.all()
+	return render_template('admin/topicList.html', tagList=tagList)
+
+@admin_blueprint.route('/delete/<topicId>', methods=['GET'])
+@login_required
+def delete(topicId):
+	t = Topics()
+	topic = t.query.filter_by(id=topicId).first()
+	db.session.delete(topic)
+	db.session.commit()
+	return redirect(url_for('admin.topicList'))
