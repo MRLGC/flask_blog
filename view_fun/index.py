@@ -66,5 +66,5 @@ def icon():
 @index_blueprint.route('/aboutPic', methods=['GET'])
 def aboutPic():
 	uploaddir = os.path.join(basedir, 'static/img/adminPic')
-	return send_from_directory(uploaddir, 'personalPic.jpg')
+	return send_from_directory(uploaddir, 'personalPic.png')
 
