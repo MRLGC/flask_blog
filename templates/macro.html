@@ -7,3 +7,30 @@
     {% endfor %}
 {% endif %}
 {% endmacro %}
+
+{% macro panelHtml() %}
+<div class="col-lg-4 edit-margin-top side-bar">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    侧栏
+                </h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <a href="{{url_for('admin.topicList')}}">
+                            文章列表
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="{{url_for('admin.index')}}">
+                            编辑
+                        </a>
+                    </li>
+                    <li class="list-group-item">待定</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
