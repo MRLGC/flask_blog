@@ -27,7 +27,6 @@ login_opt = LoginManager()
 login_opt.login_manager = 'admin.login'
 login_opt.session_protection = 'strong'
 login_opt.login_message = "Please login to access this page."
-# login_opt.login_message_category = 'info'
 basedir = os.path.dirname(os.path.abspath(__name__))
 def dynamicMyBlogEdit():
 	t = Tags().query.all()

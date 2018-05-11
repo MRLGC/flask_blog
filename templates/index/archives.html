@@ -3,9 +3,9 @@
 	{{ super() }}
 <div class="container">
   <div class="row">
-  <div class="col-lg-8 col-lg-offset-2 well">
-  <div class="archives-tags-wrap"><blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
-		  <section class="archives-wrap">
+<section id="main">
+  <div class="archives-tags-wrap well archives-wrap">
+    <blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
 		    <div class="archives">
           {% for i in topicList %}
 		      <article class="archive-article archive-type-post">
@@ -23,9 +23,8 @@
           </article>
           {% endfor %}
         </div>
-      </section>
-  </div>
-</div>
+    </div>
+  </section>
 </div>
 </div>
 {% endblock %}

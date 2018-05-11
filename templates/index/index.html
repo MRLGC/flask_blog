@@ -11,7 +11,7 @@
               <h2 class="section-heading">
                 <a href="{{url_for('index.detail', topicId=i.id)}}">{{i.title}}</a>
               </h2>
-              <p class="lead">{{i.content[:100]|safe}}</p>
+              <p class="lead">{{i.content[:200]|safe}}</p>
               <span class="label label-default">{{i.tag.tag_name}}</span>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
