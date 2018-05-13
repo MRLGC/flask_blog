@@ -12,6 +12,7 @@ from models.tags import Tags
 from models.users import Users
 from forms.edit import MyBlogEdit
 from models import db
+from flask import jsonify
 from flask_login import LoginManager
 from flask_login import login_user
 from flask_login import login_required
@@ -65,11 +66,16 @@ def index():
 @admin_blueprint.route('/upload', methods=['POST'])
 @login_required
 def upload():
-	f = request.files.get('upload')
+	f = request.files.get('editormd-image-file')
 	uploaddir = os.path.join(basedir, 'uploadfile')
 	f.save(os.path.join(uploaddir, f.filename))
 	url = url_for('admin.files', filename=f.filename)
-	return url
+	msg = {
+		'success':1,
+		'massage':"上传成功",
+		'url':url,
+	}
+	return jsonify(msg)
 
 @admin_blueprint.route('/files/<filename>')
 def files(filename):
@@ -84,7 +90,7 @@ def add():
 	if form.validate_on_submit():
 		topic = Topics()
 		topic.title = form.title.data
-		topic.content = form.content.data
+		topic.content = request.form.get('editormd-html-code')
 		topic.tag_id = form.tags.data
 		db.session.add(topic)
 		db.session.commit()

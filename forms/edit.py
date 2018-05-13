@@ -11,5 +11,6 @@ class MyBlogEdit(FlaskForm):
 	title = StringField('标题', validators=[DataRequired()])
 	submit = SubmitField('提交')
 	content = TextAreaField('文章内容', validators=[DataRequired()])
+	
 	def __setattr__(self, name, value):
 		super().__setattr__(name, value)
