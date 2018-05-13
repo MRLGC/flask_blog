@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {%- block styles %}
 	{{super()}}
-	{{ckeditor.load()}}
+	<link rel="stylesheet" href="{{ url_for('static',filename='css/editormd.css') }}"/>
 {% endblock styles %}
 {% block page_content %}
 	{{super()}}
@@ -27,9 +27,10 @@
 						{{form_errors(form.tags)}}
 					</div>
 					<div class="form-gruop edit-margin">
-						{{form.ckeditor.label}}
-						{{form.ckeditor}}
-						{{form_errors(form.ckeditor)}}
+						<div id="editormd">
+							{{form.content(class='form-control')}}
+							{{form_errors(form.content)}}
+						</div>
 					</div>
 					<div class="form-gruop">
 						{{form.submit(class="btn btn-primary edit-margin-btn")}}
@@ -39,5 +40,20 @@
 		</div>
 	</div>
 </div>
-{{ckeditor.config(name='ckeditor')}}
 {% endblock %}
+{% block scripts %}
+	{{ super() }}
+	<script type="text/javascript" src="{{url_for('static', filename='js/editormd.min.js')}}"></script>
+	<script type="text/javascript">
+		var testEditor;
+	
+		$(function () {
+			testEditor = editormd("editormd", {
+				width: "100%",
+				height: 640,
+				syncScrolling: "single",
+				path: "{{ url_for('static',filename='editormd/lib/') }}"
+			});
+		});
+	</script>
+{% endblock scripts %}

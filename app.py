@@ -1,10 +1,10 @@
 from flask import Flask
 from view_fun.index import index_blueprint as index
 from flask_bootstrap import Bootstrap
+from flask_markdown import Markdown
 from view_fun.admin import admin_blueprint as admin
 from models import db
 from view_fun.admin import login_opt
-from view_fun.admin import ckeditor
 from config import DevConfig, ProdConfig
 import platform
 def createApp():
@@ -16,7 +16,6 @@ def createApp():
 		app.config.from_object(DevConfig)
 	Bootstrap(app)
 	db.init_app(app)
-	ckeditor.init_app(app)
 	login_opt.init_app(app)
 	app.register_blueprint(index)
 	app.register_blueprint(admin)

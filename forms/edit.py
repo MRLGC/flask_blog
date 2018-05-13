@@ -5,11 +5,11 @@ from wtforms import SelectField
 from wtforms import SubmitField
 from wtforms.validators import DataRequired
 from models.tags import Tags
-from flask_ckeditor import CKEditorField
+
 
 class MyBlogEdit(FlaskForm):
-	title = StringField('Title', validators=[DataRequired()])
+	title = StringField('标题', validators=[DataRequired()])
 	submit = SubmitField('提交')
-	ckeditor = CKEditorField('Text', validators=[DataRequired()])
+	content = TextAreaField('文章内容', validators=[DataRequired()])
 	def __setattr__(self, name, value):
 		super().__setattr__(name, value)

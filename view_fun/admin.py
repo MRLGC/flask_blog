@@ -16,8 +16,6 @@ from flask_login import LoginManager
 from flask_login import login_user
 from flask_login import login_required
 import os
-from flask_ckeditor import CKEditor
-ckeditor = CKEditor()
 admin_blueprint = Blueprint(
 	'admin',
 	__name__,
@@ -66,7 +64,6 @@ def index():
 
 @admin_blueprint.route('/upload', methods=['POST'])
 @login_required
-@ckeditor.uploader
 def upload():
 	f = request.files.get('upload')
 	uploaddir = os.path.join(basedir, 'uploadfile')
@@ -87,7 +84,7 @@ def add():
 	if form.validate_on_submit():
 		topic = Topics()
 		topic.title = form.title.data
-		topic.content = form.ckeditor.data
+		topic.content = form.content.data
 		topic.tag_id = form.tags.data
 		db.session.add(topic)
 		db.session.commit()
