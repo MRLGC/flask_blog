@@ -2,29 +2,27 @@
 {% block page_content %}
 	{{ super() }}
 <div class="container">
-  <div class="row">
-<section id="main">
-  <div class="archives-tags-wrap well archives-wrap">
-    <blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
-		    <div class="archives">
-          {% for i in topicList %}
-		      <article class="archive-article archive-type-post">
-            <div class="archive-article-inner">
-               <header class="archive-article-header">
-                <span class="glyphicon glyphicon-time"></span>
-                <time datetime="{{i.createTime}}" itemprop="datePublished">{{i.createTime.strftime('%Y-%m-%d')}}</time>
-                </a>
-                <h3 class="thumb" itemprop="name">
-                <span class="glyphicon glyphicon-bookmark"></span>
-                <a class="archive-article-title" href="{{url_for('index.detail', topicId=i.id)}}">{{i.title}}</a>
-                </h3>
-              </header>
-             </div>
-          </article>
-          {% endfor %}
-        </div>
+  <div class="row row-margin">
+    <div class="archives-tags-wrap well col-lg-10 col-lg-offset-1">
+      <blockquote><span>There are {{ topicList|length }} posts in total till now.</span></blockquote>
+          <div class="archives">
+            {% for i in topicList %}
+            <article class="archive-article archive-type-post">
+              <div class="archive-article-inner">
+                <header class="archive-article-header">
+                  <span class="glyphicon glyphicon-time"></span>
+                  <time datetime="{{i.createTime}}" itemprop="datePublished">{{i.createTime.strftime('%Y-%m-%d')}}</time>
+                  </a>
+                  <h3 class="thumb" itemprop="name">
+                  <span class="glyphicon glyphicon-bookmark"></span>
+                  <a class="archive-article-title" href="{{url_for('index.detail', topicId=i.id)}}">{{i.title}}</a>
+                  </h3>
+                </header>
+              </div>
+            </article>
+            {% endfor %}
+          </div>
     </div>
-  </section>
 </div>
 </div>
 {% endblock %}

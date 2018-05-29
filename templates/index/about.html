@@ -2,9 +2,9 @@
 {% block page_content %}
 	{{super()}}
 <div class="container">
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 well">
-			<img src="{{url_for('index.aboutPic')}}" class="img-rounded img-responsive">
+	<div class="row row-margin">
+		<div class="well col-lg-10 col-lg-offset-1">
+			<img src="{{url_for('index.aboutPic')}}" class="img-rounded img-responsive center-block">
 			<h2>
 				<span class="glyphicon glyphicon-user"></span>
 				关于我：
@@ -17,6 +17,7 @@
 							个人简介：
 						</dt>
 						<dd>
+							
 							<p>
 								互联网从业者，爬虫爱好者，web开发爱好者，Python爱好者
 							</p>
