@@ -8,6 +8,7 @@ class Topics(db.Model):
 	title = db.Column(db.String(50))
 	id = db.Column(db.Integer, primary_key=True)
 	content = db.Column(db.Text)
+	content_md = db.Column(db.Text)
 	author_id = db.Column(db.Integer)
 	tag_id = db.Column(db.Integer, db.ForeignKey('tags.id'))
 	pic_url = db.Column(db.String(200))
