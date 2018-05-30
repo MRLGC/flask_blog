@@ -56,7 +56,7 @@ def login():
 	return render_template('admin/login.html', form=form)
 
 
-@admin_blueprint.route('/edit ', methods=['GET', 'POST'])
+@admin_blueprint.route('/edit', methods=['GET', 'POST'])
 @login_required
 def index():
 	MyBlog = dynamicMyBlogEdit()
@@ -118,7 +118,12 @@ def delete(topicId):
 
 @admin_blueprint.route('/rewrite/<topicId>', methods=['GET'])
 @login_required
-def rewrite(TopicId):
+def rewrite(topicId):
 	t = Topics()
-	topic = t.query.filter_by(id=TopicId).first()
-	
+	topic = t.query.filter_by(id=topicId).first()
+	mf = dynamicMyBlogEdit()
+	form = mf()
+	form.title.data = topic.title
+	form.content.data = topic.content_md
+	form.tags.data = topic.tag_id
+	return render_template('admin/edit.html', form=form)

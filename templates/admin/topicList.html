@@ -20,10 +20,14 @@
                                     {{t.title}}
                                 </a>
                                 <span class="badge">
-                                    <a class="edit-font" href="{{url_for('admin.delete', topicId=t.id)}}">删除</a>
+                                    <a class="edit-font" href="{{url_for('admin.delete', topicId=t.id)}}">
+                                        删除
+                                    </a>
                                 </span>
                                 <span class="badge">
-                                    修改
+                                    <a class="edit-font" href="{{url_for('admin.rewrite', topicId=t.id)}}">
+                                        修改
+                                    </a>
                                 </span>
                             </li>
                         {% endfor %}
