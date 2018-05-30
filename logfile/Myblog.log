@@ -276,3 +276,6 @@ sqlalchemy.orm.exc.UnmappedInstanceError: Class 'flask_sqlalchemy.BaseQuery' is 
 2018-05-30 23:45:14,697 INFO: Myblog startup [.\app.py:35]
 2018-05-30 23:47:08,210 INFO: Myblog startup [E:\ДњТы\my_blog\my_blog\app.py:35]
 2018-05-30 23:58:08,144 INFO: Myblog startup [.\app.py:35]
+2018-05-31 00:21:25,652 INFO: Myblog startup [.\app.py:35]
+2018-05-31 00:21:27,139 INFO: Myblog startup [.\app.py:35]
+2018-05-31 00:22:44,457 INFO: Myblog startup [.\app.py:35]

@@ -2,9 +2,8 @@
 {% block page_content %}
     {{ super() }}
 <div class="container">
-    <div class="row">
-        <section id="main">
-            <div class="archives-wrap  well">
+    <div class="row-margin row">
+        <div class="col-lg-10 col-lg-offset-1 well">
             <header class="article-header">
                 <h2 class="thumb text-center" class="article-title" itemprop="name">
                     {{topicObj.title}}
@@ -42,7 +41,6 @@
                 </div>
             </div>
         </div>
-        </section>
     </div>
 </div>
 {% endblock %}
