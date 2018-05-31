@@ -1,4 +1,22 @@
 {% extends "base.html" %}
+{%- block styles %}
+{{super()}}
+<style>
+    .text-container {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    p {
+        font-size: 1.2em;
+    }
+    img {
+        display: block;
+        margin: auto;
+        border: 20px;
+        padding-top: 30px;
+    }
+</style>
+{%- endblock styles %}
 {% block page_content %}
     {{ super() }}
 <div class="container">
@@ -18,7 +36,7 @@
             </span>
             </div>
             <hr class="hr">
-            <div class="center-block">
+            <div class="center-block text-container">
                 {{topicObj.content|safe}}
             </div>
             <hr class="hr">
