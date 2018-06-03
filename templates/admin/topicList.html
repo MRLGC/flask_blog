@@ -16,7 +16,7 @@
                         </li>
                         {% for t in i.topic %}
                             <li class="list-group-item">
-                                <a href="{{url_for('index.detail', topicId=i.id)}}">
+                                <a href="{{url_for('index.detail', topicId=t.id)}}">
                                     {{t.title}}
                                 </a>
                                 <span class="badge">
