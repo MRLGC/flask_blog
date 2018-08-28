@@ -1,7 +1,6 @@
 from flask import Flask
 from view_fun.index import index_blueprint as index
 from flask_bootstrap import Bootstrap
-# from flask_markdown import Markdown
 from view_fun.admin import admin_blueprint as admin
 from models import db
 from view_fun.admin import login_opt

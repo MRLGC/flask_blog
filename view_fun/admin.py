@@ -5,6 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import make_response
 from flask import send_from_directory
+from flask import jsonify
 from wtforms import SelectField
 from forms.login import Login
 from models.topic import Topics
@@ -12,11 +13,11 @@ from models.tags import Tags
 from models.users import Users
 from forms.edit import MyBlogEdit
 from models import db
-from flask import jsonify
 from flask_login import LoginManager
 from flask_login import login_user
 from flask_login import login_required
 import os
+
 admin_blueprint = Blueprint(
 	'admin',
 	__name__,

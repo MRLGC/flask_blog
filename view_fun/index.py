@@ -1,3 +1,6 @@
+import os
+import random
+
 from flask import Blueprint
 from flask import render_template
 from flask import url_for
@@ -5,8 +8,8 @@ from flask import send_from_directory
 from flask import abort
 from models.topic import Topics
 from models.tags import Tags
-import os
-import random
+from util.parse import parse_content
+
 index_blueprint = Blueprint(
 	'index',
 	__name__,
@@ -24,6 +27,7 @@ def index():
 	ranPicLs = random.sample(picLs, 4)
 	for i, p in zip(topicList, ranPicLs):
 		i.pic_url = p
+	# topicList = [parse_content(i) for i in topicList]
 	return render_template('index/index.html', topicList=topicList)
 
 @index_blueprint.route('/archives',methods=['GET'])
