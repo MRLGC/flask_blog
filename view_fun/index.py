@@ -30,7 +30,7 @@ def index():
 	for i, p in zip(topicList, ranPicLs):
 		i.pic_url = p
 		
-		i.content = parse_content(i.content)
+		# i.content = parse_content(i.content)
 	return render_template('index/index.html', topicList=topicList)
 
 @index_blueprint.route('/archives',methods=['GET'])
