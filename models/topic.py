@@ -1,6 +1,10 @@
+import os
+import datetime
+import random
+
 from models import db
 from models import tags
-import datetime
+from util.parse import parse_content
 
 class Topics(db.Model):
 
@@ -18,8 +22,16 @@ class Topics(db.Model):
 		self.createTime = datetime.datetime.now()
 		self.author_id = '1'
 
-	def get_topic_sum(self):
-		pass
+	@classmethod
+	def get_topic_sum(cls, basedir):
+		topic = cls.query.order_by(cls.createTime.desc()).limit(4)
+		path = os.path.join(basedir, 'static/img/randomPic')
+		picLs = os.listdir(path)
+		ranPicLs = random.sample(picLs, 4)
+		for i, p in zip(topic, ranPicLs):
+			i.pic_url = p
+			i.content = parse_content(i.content)
+		return topic
 
 	def __repr__(self):
 		return "<Topic {}>".format(self.title)

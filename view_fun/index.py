@@ -9,8 +9,7 @@ from flask import send_from_directory
 from flask import abort
 from models.topic import Topics
 from models.tags import Tags
-from util.parse import parse_content
-from models import db
+
 
 index_blueprint = Blueprint(
 	'index',
@@ -22,15 +21,7 @@ basedir = os.path.dirname(os.path.abspath(__name__))
 
 @index_blueprint.route('/',methods=['GET'])
 def index():
-	topic = Topics()
-	topicList = topic.query.order_by('createTime').limit(4)
-	path = os.path.join(basedir, 'static/img/randomPic')
-	picLs = os.listdir(path)
-	ranPicLs = random.sample(picLs, 4)
-	for i, p in zip(topicList, ranPicLs):
-		i.pic_url = p
-		
-		# i.content = parse_content(i.content)
+	topicList = Topics.get_topic_sum(basedir)
 	return render_template('index/index.html', topicList=topicList)
 
 @index_blueprint.route('/archives',methods=['GET'])
