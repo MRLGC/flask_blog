@@ -18,6 +18,8 @@ class Topics(db.Model):
 		self.createTime = datetime.datetime.now()
 		self.author_id = '1'
 
+	def get_topic_sum(self):
+		pass
 
 	def __repr__(self):
 		return "<Topic {}>".format(self.title)

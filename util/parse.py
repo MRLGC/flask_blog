@@ -1,5 +1,5 @@
 import re
 
-def parse_content(topic):
-    topic.content = re.findall('<.*?>(.*?)</.*?>', topic.content)
-    return topic
+def parse_content(content):
+    new_content = re.findall('<.*?>(.*?)</.*?>', content)
+    return new_content
